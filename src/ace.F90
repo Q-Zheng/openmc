@@ -686,7 +686,7 @@ contains
       ! read delayed neutron precursor data
       XSS_index = lc
       nuc % nu_d_precursor_data = get_real(length)
-
+      
     else
       nuc % nu_d_type = NU_NONE
       nuc % n_precursor = 0

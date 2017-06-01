@@ -3006,10 +3006,11 @@ contains
               end if
             end do
           end if
-
+          
           ! Check if delayed group filter is used with any score besides
           ! delayed-nu-fission
           if (score_name /= 'delayed-nu-fission' .and. &
+               score_name /= 'delayed-decay' .and. &                            ! @mthe
                t % find_filter(FILTER_DELAYEDGROUP) > 0) then
             call fatal_error("Cannot tally " // trim(score_name) // " with a &
                  &delayedgroup filter.")
@@ -3176,6 +3177,12 @@ contains
             end if
           case ('delayed-nu-fission')
             t % score_bins(j) = SCORE_DELAYED_NU_FISSION
+            if (t % find_filter(FILTER_ENERGYOUT) > 0) then
+              ! Set tally estimator to analog
+              t % estimator = ESTIMATOR_ANALOG
+            end if
+          case ('delayed-decay')                                                ! @mthe
+            t % score_bins(j) = SCORE_DELAYED_DECAY
             if (t % find_filter(FILTER_ENERGYOUT) > 0) then
               ! Set tally estimator to analog
               t % estimator = ESTIMATOR_ANALOG

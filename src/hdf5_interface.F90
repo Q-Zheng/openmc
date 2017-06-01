@@ -1896,12 +1896,16 @@ contains
   function using_mpio_device(obj_id) result(mpio)
     integer(HID_T), intent(in) :: obj_id
     logical :: mpio
-
+    
     integer :: hdf5_err
-    integer :: driver
+    integer(HID_T) :: driver
     integer(HID_T) :: file_id
     integer(HID_T) :: fapl_id
-
+    
+    ! 
+    mpio = .FALSE.
+    return
+    
     ! Determine file that this object is part of
     call h5iget_file_id_f(obj_id, file_id, hdf5_err)
 

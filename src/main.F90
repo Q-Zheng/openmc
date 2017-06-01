@@ -9,10 +9,10 @@ program main
   use simulation,        only: run_simulation
 
   implicit none
-
+  
   ! set up problem
   call initialize_run()
-
+  
   ! start problem based on mode
   select case (run_mode)
   case (MODE_FIXEDSOURCE, MODE_EIGENVALUE)

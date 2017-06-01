@@ -35,7 +35,7 @@ contains
 #ifdef _OPENMP
     use omp_lib
 #endif
-
+!open(ou,file='output')
     write(UNIT=OUTPUT_UNIT, FMT='(/11(A/))') &
          '       .d88888b.                             888b     d888  .d8888b.', &
          '      d88P" "Y88b                            8888b   d8888 d88P  Y88b', &
@@ -979,6 +979,7 @@ contains
     score_names(abs(SCORE_NU_SCATTER_PN))      = "Scattering Prod. Rate Moment"
     score_names(abs(SCORE_NU_SCATTER_YN))      = "Scattering Prod. Rate Moment"
     score_names(abs(SCORE_DELAYED_NU_FISSION)) = "Delayed-Nu-Fission Rate"
+    score_names(abs(SCORE_DELAYED_DECAY))      = "Delayed-Nu-Fission Decay Rate"
     score_names(abs(SCORE_INVERSE_VELOCITY))   = "Flux-Weighted Inverse Velocity"
 
     ! Create filename for tally output
